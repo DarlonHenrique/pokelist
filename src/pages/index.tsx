@@ -5,16 +5,16 @@ const Home: NextPage = () => {
   return (
     <>
       <Head>
-        <title>Pokelist</title>
+        <title>PokeList</title>
         <meta
           name='description'
           content='Pokelist App Created With ☕ by Darlon Henrique'
         />
-        <link rel='pokelist icon' href='/images/favicon.ico' />
+        <link rel='icon' type='image/x-icon' href='/images/favicon.ico' />
       </Head>
 
       <header>
-        <h1>Home</h1>
+        <img src='images/logo.png' alt='PokeList Logo' />
       </header>
 
       <main></main>
