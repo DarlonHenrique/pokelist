@@ -1,5 +1,6 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
+import { Header } from '../components/Header'
 
 const Home: NextPage = () => {
   return (
@@ -13,9 +14,7 @@ const Home: NextPage = () => {
         <link rel='icon' type='image/x-icon' href='/images/favicon.ico' />
       </Head>
 
-      <header>
-        <img src='images/logo.png' alt='PokeList Logo' />
-      </header>
+      <Header />
 
       <main></main>
 
