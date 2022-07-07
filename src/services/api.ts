@@ -1,5 +1,3 @@
-import axios from 'axios'
+import { PokemonClient } from 'pokenode-ts'
 
-export const api = axios.create({
-  baseURL: '/api'
-})
+export const api = new PokemonClient()

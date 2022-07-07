@@ -1,8 +1,11 @@
 import type { GetStaticProps, NextPage } from 'next'
+import { Pokemon } from 'pokenode-ts'
 import Head from 'next/head'
 import { Header } from '../components/Header'
+import { api } from '../services/api'
+import { PokemonCard } from '../components/PokemonCard'
 
-const Home: NextPage = () => {
+const Home: NextPage<{ pokemons: Pokemon[] }> = ({ pokemons }) => {
   return (
     <>
       <Head>
@@ -13,10 +16,15 @@ const Home: NextPage = () => {
         />
         <link rel='icon' type='image/x-icon' href='/images/favicon.ico' />
       </Head>
-
       <Header />
 
-      <main></main>
+      <main>
+        <div className='container'>
+          {pokemons.map(pokemon => (
+            <PokemonCard pokemon={pokemon} key={pokemon.id} />
+          ))}
+        </div>
+      </main>
 
       <footer></footer>
     </>
@@ -24,9 +32,17 @@ const Home: NextPage = () => {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
+  const pokemons = await api.listPokemons() // listPokemons method returns a list of pokemons without details (only name and url)
+  const pokemonsDetails = pokemons.results.map(async pokemon => {
+    // map over the list of pokemons and get the details of each one
+    const pokeDetailed = await api.getPokemonByName(pokemon.name)
+    return pokeDetailed
+  })
+  const pokemonsWithDetails = await Promise.all(pokemonsDetails)
   return {
-    props: {},
-    revalidate: 60 * 60 * 24 // 1 day or 24 hours
+    props: {
+      pokemons: pokemonsWithDetails
+    }
   }
 }
 
