@@ -24,10 +24,10 @@ export const PokemonCardContainer = styled.div`
   }
 
   p {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     font-weight: bold;
     text-transform: capitalize;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Montserrat', sans-serif;
     margin-inline: 2rem;
     margin-bottom: 0.5rem;
   }
