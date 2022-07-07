@@ -19,7 +19,7 @@ const Home: NextPage<{ pokemons: Pokemon[] }> = ({ pokemons }) => {
       <Header />
 
       <main>
-        <div className='container'>
+        <div className='pokemons-container'>
           {pokemons.map(pokemon => (
             <PokemonCard pokemon={pokemon} key={pokemon.id} />
           ))}
@@ -32,7 +32,7 @@ const Home: NextPage<{ pokemons: Pokemon[] }> = ({ pokemons }) => {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const pokemons = await api.listPokemons() // listPokemons method returns a list of pokemons without details (only name and url)
+  const pokemons = await api.listPokemons(undefined, 18) // listPokemons method returns a list of pokemons without details (only name and url)
   const pokemonsDetails = pokemons.results.map(async pokemon => {
     // map over the list of pokemons and get the details of each one
     const pokeDetailed = await api.getPokemonByName(pokemon.name)
@@ -42,7 +42,8 @@ export const getStaticProps: GetStaticProps = async () => {
   return {
     props: {
       pokemons: pokemonsWithDetails
-    }
+    },
+    revalidate: 60 * 60 * 24 // revalidate every 24 hours
   }
 }
 
