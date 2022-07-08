@@ -39,6 +39,8 @@ export const GlobalStyle = createGlobalStyle`
     cursor: pointer;
   }
 
+  
+
   .pokemons-container {
     display: flex;
     flex-wrap: wrap;

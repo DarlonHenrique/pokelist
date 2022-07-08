@@ -37,6 +37,7 @@ export default class MyDocument extends Document {
     return (
       <Html>
         <Head>
+          <title>PokeList</title>
           <link rel='preconnect' href='https://fonts.googleapis.com/' />
           <link
             rel='preconnect'
@@ -47,6 +48,11 @@ export default class MyDocument extends Document {
             href='https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap'
             rel='stylesheet'
           />
+          <meta
+            name='description'
+            content='Pokelist App Created With ☕ by Darlon Henrique'
+          />
+          <link rel='icon' type='image/x-icon' href='/images/favicon.ico' />
         </Head>
         <body>
           <Main />
