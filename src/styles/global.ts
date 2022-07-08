@@ -45,6 +45,7 @@ export const GlobalStyle = createGlobalStyle`
     display: flex;
     flex-wrap: wrap;
     margin: 1rem 5rem;
+    justify-content: space-between;
   }
 
   [disabled] {

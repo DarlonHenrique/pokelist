@@ -9,7 +9,7 @@ export function Footer() {
       <button disabled={offset === 0} onClick={loadPrevPage}>
         Prev Page
       </button>
-      <button>{offset / 20 + 1}</button>
+      <span>{offset / 20 + 1}</span>
       <button onClick={loadNextPage}>Next Page</button>
     </FooterContainer>
   )

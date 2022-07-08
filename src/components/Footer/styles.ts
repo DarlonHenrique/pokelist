@@ -7,6 +7,7 @@ export const FooterContainer = styled.footer`
 
   margin-bottom: 2rem;
 
+  span,
   button {
     background-color: var(--blue);
     color: #fff;
@@ -16,6 +17,9 @@ export const FooterContainer = styled.footer`
     font-size: 1rem;
     font-weight: bold;
     margin-right: 0.5rem;
+  }
+
+  button {
     transition: 0.2s;
 
     &:hover {
