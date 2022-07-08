@@ -12,6 +12,7 @@ interface PokemonsContextType {
   pokemons: Pokemon[]
   loadNextPage: () => void
   loadPrevPage: () => void
+  offset: number
 }
 
 interface PokemonsProviderProps {
@@ -21,7 +22,8 @@ interface PokemonsProviderProps {
 const PokemonsContext = createContext<PokemonsContextType>({
   pokemons: [],
   loadNextPage: () => {},
-  loadPrevPage: () => {}
+  loadPrevPage: () => {},
+  offset: 0
 })
 
 export function PokemonsProvider({ children }: PokemonsProviderProps) {
@@ -33,14 +35,16 @@ export function PokemonsProvider({ children }: PokemonsProviderProps) {
     loadPokemons(0)
   }, [])
 
+  useEffect(() => {
+    loadPokemons(offset)
+  }, [offset])
+
   const loadNextPage = () => {
     setOffset(offset + 20)
-    loadPokemons(offset)
   }
 
   const loadPrevPage = () => {
     setOffset(offset - 20)
-    loadPokemons(offset)
   }
 
   const loadPokemons = async (offset: number) => {
@@ -59,7 +63,9 @@ export function PokemonsProvider({ children }: PokemonsProviderProps) {
   }
 
   return (
-    <PokemonsContext.Provider value={{ pokemons, loadNextPage, loadPrevPage }}>
+    <PokemonsContext.Provider
+      value={{ pokemons, loadNextPage, loadPrevPage, offset }}
+    >
       {children}
     </PokemonsContext.Provider>
   ) // return the context and the children

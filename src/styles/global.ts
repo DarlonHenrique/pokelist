@@ -44,7 +44,7 @@ export const GlobalStyle = createGlobalStyle`
   .pokemons-container {
     display: flex;
     flex-wrap: wrap;
-    margin: 2rem 5rem;
+    margin: 1rem 5rem;
   }
 
   [disabled] {

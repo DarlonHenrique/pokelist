@@ -7,14 +7,6 @@ export const HeaderContainer = styled.header`
 
   img {
     height: 5rem;
-    margin: 1rem;
-  }
-
-  input {
-    width: 50%;
-    font-size: 1.5rem;
-    padding: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 0.5rem;
+    margin-top: 1rem;
   }
 `
