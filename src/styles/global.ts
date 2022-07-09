@@ -39,15 +39,6 @@ export const GlobalStyle = createGlobalStyle`
     cursor: pointer;
   }
 
-  
-
-  .pokemons-container {
-    display: flex;
-    flex-wrap: wrap;
-    margin: 1rem 5rem;
-    justify-content: center;
-  }
-
   [disabled] {
     opacity: 0.6;
     cursor: not-allowed;

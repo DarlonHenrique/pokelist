@@ -3,20 +3,20 @@ import { Header } from '../components/Header'
 import { PokemonCard } from '../components/PokemonCard'
 import { Footer } from '../components/Footer'
 import { usePokemons } from '../hooks/usePokemons'
+import { Pokemons } from '../components/Pokemons'
+import Head from 'next/head'
 
 const Home: NextPage = () => {
   const { pokemons } = usePokemons()
 
   return (
     <>
+      <Head>
+        <title>PokeList</title>
+      </Head>
       <Header />
-
       <main>
-        <div className='pokemons-container'>
-          {pokemons.map(pokemon => (
-            <PokemonCard pokemon={pokemon} key={pokemon.id} />
-          ))}
-        </div>
+        <Pokemons />
       </main>
 
       <Footer />

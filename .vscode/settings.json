@@ -1,8 +1,13 @@
 {
   "cSpell.words": [
+    "INDEXEDDB",
+    "localforage",
+    "LOCALSTORAGE",
+    "memorystore",
     "pokelist",
     "Pokemons",
     "pokenode",
-    "Segoe"
+    "Segoe",
+    "WEBSQL"
   ]
 }
