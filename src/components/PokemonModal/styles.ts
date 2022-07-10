@@ -27,8 +27,9 @@ export const PokemonModalContentContainer = styled.div`
 `
 
 export const ImageContainer = styled.div<ImageContainerProps>`
-  border: 2px solid ${props => pokemonTypeColors[props.pokemonType]};
-  border-radius: 0.5rem;
+  border: 18px solid ${props => pokemonTypeColors[props.pokemonType]};
+  border-radius: 100%;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
 `
 
 export const PokemonStatsTable = styled.table`
