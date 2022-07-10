@@ -56,9 +56,8 @@ export function PokemonModal({ isOpen, onRequestClose }: PokemonModalProps) {
 
                 <TypeContainer>
                   {pokemon.types.map(type => (
-                    <div className='single-type-container'>
+                    <div key={type.type.name} className='single-type-container'>
                       <Image
-                        key={type.type.name}
                         src={pokemonTypeIcons[type.type.name as PokemonType]}
                         alt={type.type.name}
                         width={30}
