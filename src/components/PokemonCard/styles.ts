@@ -31,4 +31,9 @@ export const PokemonCardContainer = styled.div`
     margin-inline: 2rem;
     margin-bottom: 0.5rem;
   }
+
+  @media (max-width: 720px) {
+    margin: 0.6rem;
+    padding: 0.6rem;
+  }
 `
