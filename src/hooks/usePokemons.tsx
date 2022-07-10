@@ -8,6 +8,7 @@ import {
 } from 'react'
 import { api } from '../services/api'
 
+// typing for the context
 interface PokemonsContextType {
   pokemons: Pokemon[]
   loadNextPage: () => void
@@ -15,10 +16,7 @@ interface PokemonsContextType {
   offset: number
 }
 
-interface PokemonsProviderProps {
-  children: ReactNode
-}
-
+// create the context
 const PokemonsContext = createContext<PokemonsContextType>({
   pokemons: [],
   loadNextPage: () => {},
@@ -26,7 +24,8 @@ const PokemonsContext = createContext<PokemonsContextType>({
   offset: 0
 })
 
-export function PokemonsProvider({ children }: PokemonsProviderProps) {
+// create and export the provider
+export function PokemonsProvider({ children }: { children: ReactNode }) {
   const [pokemons, setPokemons] = useState<Pokemon[]>([])
   const [offset, setOffset] = useState(0)
 
@@ -71,6 +70,7 @@ export function PokemonsProvider({ children }: PokemonsProviderProps) {
   ) // return the context and the children
 }
 
+// create and export the custom hook usePokemons
 export function usePokemons() {
   const context = useContext(PokemonsContext)
   return context

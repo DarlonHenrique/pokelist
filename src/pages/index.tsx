@@ -1,13 +1,16 @@
 import type { NextPage } from 'next'
 import { Header } from '../components/Header'
-import { PokemonCard } from '../components/PokemonCard'
 import { Footer } from '../components/Footer'
-import { usePokemons } from '../hooks/usePokemons'
 import { Pokemons } from '../components/Pokemons'
 import Head from 'next/head'
+import Modal from 'react-modal'
+import { PokemonModal } from '../components/PokemonModal'
+import { usePokemonModal } from '../hooks/usePokemonModal'
+
+Modal.setAppElement('#__next')
 
 const Home: NextPage = () => {
-  const { pokemons } = usePokemons()
+  const { isPokemonModalOpen, handleClosePokemonModal } = usePokemonModal()
 
   return (
     <>
@@ -15,6 +18,10 @@ const Home: NextPage = () => {
         <title>PokeList</title>
       </Head>
       <Header />
+      <PokemonModal
+        isOpen={isPokemonModalOpen}
+        onRequestClose={handleClosePokemonModal}
+      />
       <main>
         <Pokemons />
       </main>

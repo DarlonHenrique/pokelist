@@ -55,6 +55,7 @@ export const GlobalStyle = createGlobalStyle`
     align-items: center;
     justify-content: center;
   }
+  
   .react-modal-content {
     width: 100%;
     max-width: 576px;
@@ -63,6 +64,7 @@ export const GlobalStyle = createGlobalStyle`
     position: relative;
     border-radius: 0.25rem;
   }
+  
   .react-modal-close {
     position: absolute;
     right: 1.5rem;
