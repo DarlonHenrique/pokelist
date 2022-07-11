@@ -3,11 +3,7 @@ import { usePokemonModal } from '../../hooks/usePokemonModal'
 import { PokemonType } from '../../shared/utils/pokemon'
 import { PokemonCardContainer } from './styles'
 
-interface PokemonCardProps {
-  pokemon: Pokemon
-}
-
-export function PokemonCard({ pokemon }: PokemonCardProps) {
+export function PokemonCard({ pokemon }: { pokemon: Pokemon }) {
   const { handleOpenPokemonModal } = usePokemonModal()
 
   // create a function to handle the click event open modal and pass the pokemon data to the modal

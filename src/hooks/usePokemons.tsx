@@ -6,6 +6,7 @@ import {
   useEffect,
   useState
 } from 'react'
+import { toast } from 'react-toastify'
 import { api } from '../services/api'
 
 // typing for the context
@@ -31,11 +32,12 @@ export function PokemonsProvider({ children }: { children: ReactNode }) {
 
   // load pokemons first time the component is mounted
   useEffect(() => {
-    loadPokemons(0)
+    getPokemons(0)
   }, [])
 
   useEffect(() => {
-    loadPokemons(offset)
+    // get pokemons again when the offset changes
+    getPokemons(offset)
   }, [offset])
 
   const loadNextPage = () => {
@@ -46,17 +48,24 @@ export function PokemonsProvider({ children }: { children: ReactNode }) {
     setOffset(offset - 20)
   }
 
-  const loadPokemons = async (offset: number) => {
+  const getPokemons = async (offset: number) => {
     try {
-      const pokemons = await api.listPokemons(offset, 18) // listPokemons method returns a list of pokemons without details (only name and url)
-      const promisePokemonsWithDetails = pokemons.results.map(async pokemon => {
+      // try to load pokemons from API
+
+      const pokemonsList = await api.listPokemons(offset, 18) // listPokemons method returns a list of pokemons without details (only name and url)
+
+      const pokemonsPromise = pokemonsList.results.map(async pokemon => {
         // map over the list of pokemons and get the details of each one
-        const pokemonDetailed = await api.getPokemonByName(pokemon.name) // getPokemonByName method returns a pokemon with details
-        return pokemonDetailed // return the details of each pokemon
+        const pokemonData = await api.getPokemonByName(pokemon.name) // getPokemonByName method returns a pokemon with details
+        return pokemonData // return the details of each pokemon
       })
-      const pokemonsWithDetails = await Promise.all(promisePokemonsWithDetails) // wait for all the promises to be resolved
-      setPokemons(pokemonsWithDetails)
+
+      const pokemons = await Promise.all(pokemonsPromise) // wait for all the promises to be resolved
+      setPokemons(pokemons) // set the pokemons
     } catch (error) {
+      // if there is an error
+
+      toast.error('Error on loading pokemons')
       console.error(error)
     }
   }

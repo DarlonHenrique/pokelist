@@ -5,7 +5,7 @@ import localforage from 'localforage'
 const forageStore = localforage.createInstance({
   // Prefix all storage keys to prevent conflicts
   name: 'pokelist',
-  driver: [localforage.INDEXEDDB, localforage.WEBSQL, localforage.LOCALSTORAGE]
+  driver: [localforage.INDEXEDDB, localforage.LOCALSTORAGE]
 })
 
 export const api = new PokemonClient({

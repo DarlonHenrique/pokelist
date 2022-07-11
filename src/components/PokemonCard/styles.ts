@@ -14,7 +14,6 @@ export const PokemonCardContainer = styled.div<PokemonCardContainerProps>`
   margin: 1rem;
   padding: 1rem 1rem 0rem 1rem;
 
-  border: 1px solid #ccc;
   border-radius: 0.5rem;
 
   background-color: #fff;
